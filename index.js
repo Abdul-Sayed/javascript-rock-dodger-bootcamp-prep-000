@@ -191,7 +191,10 @@ function createRock(x) {
  */
 function endGame() {
     clearInterval(gameInterval);
-    ROCKS.length = 0;
+    // ROCKS.length = 0;
+    ROCKS.forEach(function(rock) {
+        rock.remove()
+    });
     document.removeEventListener('keydown', moveDodger);
     return alert("YOU LOSE!");
 }
@@ -217,11 +220,11 @@ function moveDodger(e) {
     // })
 
     if (e.which === LEFT_ARROW) {
-        moveDodgerLeft();
+        moveDodgerLeft()
         e.preventDefault();
         e.stopPropagation();
     } else if (e.which === RIGHT_ARROW) {
-        moveDodgerRight();
+        moveDodgerRight()
         e.preventDefault();
         e.stopPropagation();
     }
